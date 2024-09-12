@@ -7,17 +7,21 @@ const ShopContextProvider = (props) => {
     const [data, setData] = useState([]);
     const [cartItem, setCartItem] = useState({});
     const [cartCount, setCartCount]= useState(0);
+    const [loading, setLoading] = useState(false);
 
     
     // fetched data from fake store api
     useEffect(() => {
+        setLoading(true);
         fetch('https://fakestoreapi.com/products')
             .then((response) => response.json())
             .then((data) => {
                 setData(data);
                 setCartItem(getDefaultCart(data));
+                setLoading(false);
             })
             .catch((err) => console.log(err));
+            setLoading(false);
     }, []);
     const getDefaultCart = (products) => {
         let cart = {};
@@ -43,7 +47,7 @@ const ShopContextProvider = (props) => {
         }
     };
 
-    const contextValue = { data, cartItem, cartCount, setCartCount, addToCart, removeFromCart };
+    const contextValue = { data, loading, cartItem, cartCount, setCartCount, addToCart, removeFromCart };
 
     return (
         <ShopContext.Provider value={contextValue}>

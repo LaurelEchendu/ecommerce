@@ -1,37 +1,42 @@
-import React from 'react'
+import React from 'react';
 import logo from '../../assets/logo.png'
-import { BsTwitterX } from "react-icons/bs";
-import { LuFacebook } from "react-icons/lu";
-import { SiInstagram } from "react-icons/si";
+import { Link } from 'react-router-dom';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa'; // Example with react-icons
 
 const Footer = () => {
-  return (
-    <div>
-      <div className='flex items-center justify-center  md:gap-[5px]'>
-        <img src={logo}/>
-        <p className='text-[#171717] lg:text-3xl font-[600] md:text-[15px] my-10'>SHOPPER</p>
-      </div>
-        
-      <hr className='h-[3px] rounded-md bg-[black]'/>
-      <footer className='flex items-center justify-between p-[30px] text-[#282828] lg:text-[17px] md:justify-between hover:text-[#515151] md:text-[11px]'>
-        <div className='flex lg:space-x-9 lg:pl-[140px] md:space-x-2 md:ml-8'>
-          <span className='cursor-pointer hover:text-[#a3a1a1]'>About Us</span>
-          <span className='cursor-pointer hover:text-[#a3a1a1]'>Blog</span>
-          <span className='cursor-pointer hover:text-[#a3a1a1] '>FAQs</span>
-          <span className='cursor-pointer hover:text-[#a3a1a1]'>Order tracking</span>
-          <span className='cursor-pointer hover:text-[#a3a1a1]'>Contact</span>
-          <span className='cursor-pointer hover:text-[#a3a1a1]'>© By Laurelechendu</span>
-        </div>
-        <div className='flex text-end text-[#282828] lg:space-x-6 lg:pl-[140px] pr-[200px] md:space-x-1 md:ml-[50px]'>
-          <LuFacebook className='cursor-pointer hover:text-[#a3a1a1]'/>
-          <SiInstagram className='cursor-pointer hover:text-[#a3a1a1]'/>
-          <BsTwitterX className='cursor-pointer hover:text-[#a3a1a1]'/>
-            
-        
-        </div>
-      </footer>
-    </div>
-  )
-}
+    return (
+        <footer className='bg-gray-800 text-white p-6 bottom-0'>
+            <div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
+                {/* Logo Section */}
+                <div className='flex mb-4 md:mb-0'>
+                <img src={logo} alt="Logo" className='w-[80px] h-auto' /> 
+                <p className='lg:text-[30px] font-[600] md:text-[12px] sm:text-[10px] mt-4 ml-2 text-white'>SHOPPER</p> 
+                </div>
+                
+                
+                {/* Navigation Links */}
+                <div className='flex flex-col md:flex-row gap-4'>
+                    <Link to='/' className='hover:underline'>Home</Link>
+                    <Link to='/about' className='hover:underline'>About</Link>
+                    <Link to='/services' className='hover:underline'>Services</Link>
+                    <Link to='/contact' className='hover:underline'>Contact</Link>
+                </div>
 
-export default Footer
+                {/* Social Media Icons */}
+                <div className='flex gap-4 mt-4 md:mt-0'>
+                    <a href='https://facebook.com' className='text-white hover:text-gray-400'>
+                        <FaFacebookF className='w-6 h-6 md:w-8 md:h-8' /> {/* Adjust icon size */}
+                    </a>
+                    <a href='https://twitter.com' className='text-white hover:text-gray-400'>
+                        <FaTwitter className='w-6 h-6 md:w-8 md:h-8' /> {/* Adjust icon size */}
+                    </a>
+                    <a href='https://instagram.com' className='text-white hover:text-gray-400'>
+                        <FaInstagram className='w-6 h-6 md:w-8 md:h-8' /> {/* Adjust icon size */}
+                    </a>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;
